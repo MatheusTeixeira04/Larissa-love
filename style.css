@@ -1,0 +1,175 @@
+/* ===== Cores (mude aqui) ===== */
+:root{--bg:#050505;--bg2:#111;--card:#161616;--text:#f2f2f2;--muted:#a6a6a6;--line:#2a2a2a;
+--wine:#8b1e2d;--wine2:#a52a3a;--steel:#6f7378;
+--sans:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0}
+/* Garante que elementos com o atributo hidden realmente saiam do layout.
+   Sem isso, regras como #intro{display:flex} e .btn{display:inline-flex}
+   podem manter o elemento invisível ocupando espaço. */
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+/* Textura sutil de grão (SVG embutido, sem imagem externa) */
+body{background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);font:300 1.05rem/1.65 var(--sans);overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.65))}
+#dust{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#intro,main{position:relative;z-index:1}
+h2{font-weight:700;font-size:clamp(1.7rem,7.2vw,2.4rem);line-height:1.12;letter-spacing:-.03em;margin-bottom:1.8rem}
+.path{font:400 .78rem var(--mono);color:var(--steel);margin-bottom:.7rem}
+.path::before{content:"› ";color:var(--wine2)}
+
+/* Botões (toque) */
+.btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:340px;min-height:56px;padding:0 1.6rem;font:600 1rem var(--sans);color:var(--text);text-decoration:none;background:var(--bg2);border:1px solid var(--wine);border-radius:12px;cursor:pointer;transition:transform .2s,background .3s}
+.btn:active{transform:scale(.97);background:var(--wine)}
+.btn.red{background:var(--wine);border-color:var(--wine2)}
+
+/* Intro */
+#intro{min-height:100svh;background:#000;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:1rem;padding:2rem 1.5rem;transition:opacity .9s,transform .9s}
+#intro.leave{opacity:0;transform:translateY(-16px);pointer-events:none}
+.rec{width:10px;height:10px;background:var(--wine2);border-radius:50%;box-shadow:0 0 12px var(--wine);animation:blink 1.6s steps(2) infinite;margin-bottom:1rem}
+.intro-line{font:400 clamp(1.05rem,4.8vw,1.35rem)/1.4 var(--mono);color:var(--muted);min-height:1.4em}
+.intro-line::before{content:"> ";color:var(--wine2)}
+.intro-line.strong{color:var(--text);font:700 clamp(1.6rem,7.6vw,2.4rem)/1.2 var(--sans);letter-spacing:-.03em}
+.intro-line.strong::before{content:""}
+.cursor::after{content:"█";color:var(--text);margin-left:2px;animation:blink 1s steps(2) infinite}
+#enter{margin-top:1.6rem;animation:rise 1s both}
+@keyframes blink{50%{opacity:0}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}}
+
+/* Seções */
+.sec{max-width:560px;margin:0 auto;padding:4.5rem 1.4rem}
+.center{text-align:center}
+.center .btn{margin:0 auto}
+.stack{display:flex;flex-direction:column;gap:.8rem}
+.soft{color:var(--muted)}
+.center .soft{margin:.8rem 0 1.6rem}
+.big{font-size:clamp(1.6rem,7vw,2.2rem);font-weight:700;line-height:1.2;letter-spacing:-.03em}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+
+/* Painel do relatório */
+.panel,.grid{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:0 14px 40px rgba(0,0,0,.6);overflow:hidden}
+.rep{padding:1rem 1.1rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.82rem}
+.rep:last-child{border-bottom:0}
+.k{color:var(--steel)}
+.v{font-weight:700;font-size:1rem;margin:.15rem 0 .7rem;color:var(--text)}
+.v.crit{color:var(--wine2)}
+.bar{height:6px;border-radius:9px;background:#0b0b0b;border:1px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--wine);box-shadow:0 0 10px rgba(165,42,58,.55);transition:width 1.7s cubic-bezier(.2,.8,.2,1) .3s}
+
+/* Cards */
+.card{padding:1.2rem 1.3rem;border-radius:12px;background:var(--card);border:1px solid var(--line);border-left:2px solid var(--steel);font-size:1.08rem}
+.card.funny{border-left-color:var(--wine2);font-style:italic;color:#ddd}
+
+/* Estatísticas */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.tile{background:var(--card);padding:1.2rem .95rem;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.tile b{font:700 clamp(1.7rem,8vw,2.1rem)/1.1 var(--mono);color:var(--text)}
+.tile b::before{content:"";display:block;width:14px;height:2px;background:var(--wine2);margin-bottom:.6rem}
+.tile b.sm{font-size:1rem;line-height:1.35;padding-top:.3rem}
+.tile span{font-size:.82rem;color:var(--muted);line-height:1.4}
+
+/* Foto: moldura escura */
+.dossier{width:min(100%,320px);margin:0 auto;padding:.6rem;border:1px solid var(--wine);border-radius:12px;background:#000;box-shadow:0 18px 44px rgba(0,0,0,.8)}
+.frame{position:relative;aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:#0d0d0d;border:1px solid var(--line);display:grid;place-items:center}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;filter:grayscale(.12) contrast(1.03)}
+.ph{font:400 .8rem var(--mono);color:var(--steel)}
+.dossier figcaption{margin-top:.7rem;font:400 .74rem var(--mono);color:var(--steel);text-align:left}
+.dossier figcaption::before{content:"● ";color:var(--wine2)}
+
+
+/* Mensagem séria */
+.serious{padding:9rem 1.7rem}
+.serious h2{font-weight:400;letter-spacing:-.01em}
+.serious p{font-size:1.22rem;line-height:1.85;color:#e6e6e6}
+.line{display:block;width:0;height:1px;background:var(--wine2);margin:0 auto 2.5rem;transition:width 2.4s ease}
+.line.in{width:64px}
+.fade{opacity:0;transition:opacity 2.6s ease}
+.serious h2.fade{transition-delay:.6s}
+.serious p.fade{transition-delay:1.6s}
+.fade.in{opacity:1}
+
+/* Final */
+.final .big{margin-bottom:1.8rem}
+#ask .btn{margin:0 auto}
+#done{animation:rise 1s both}
+footer{text-align:center;padding:2rem 1rem 6rem}
+#dot{background:none;border:0;color:var(--steel);font-size:2rem;min-width:56px;min-height:56px}
+#credit{font:400 .78rem var(--mono);color:var(--steel);animation:rise .8s both}
+
+/* Toast e partículas de confirmação */
+#toast{position:fixed;left:50%;bottom:84px;translate:-50% 30px;width:min(88vw,380px);z-index:70;padding:1rem 1.2rem;border-radius:12px;background:var(--card);border:1px solid var(--wine2);text-align:center;font-size:.95rem;opacity:0;pointer-events:none;transition:.4s}
+#toast.on{opacity:1;translate:-50% 0}
+.ember{position:fixed;bottom:-30px;z-index:60;pointer-events:none;color:var(--wine2);text-shadow:0 0 8px rgba(165,42,58,.6);animation:up linear forwards}
+@keyframes up{to{transform:translateY(-105vh) translateX(var(--dx));opacity:0}}
+
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}html{scroll-behavior:auto}}
+
+/* Link do Spotify (rodapé) */
+#spotify{display:inline-flex;align-items:center;min-height:48px;font:400 .82rem var(--mono);color:var(--muted);text-decoration:none;border-bottom:1px solid var(--wine)}
+
+
+
+/* Trilha sonora no começo da segunda parte */
+.music-start{padding-top:3.2rem;padding-bottom:2.2rem}
+.music-card{padding:1.35rem;border:1px solid var(--wine);border-radius:16px;background:linear-gradient(180deg,#111,#090909);box-shadow:0 18px 50px rgba(0,0,0,.65)}
+.music-card h2{margin:.2rem 0 .65rem;font-size:clamp(1.45rem,6.5vw,2rem)}
+.music-kicker{font:400 .78rem var(--mono);color:var(--wine2);text-transform:uppercase;letter-spacing:.08em}
+.music-card .soft{margin:0 0 1rem}
+.music-btn{max-width:none;margin:.3rem 0 1rem}
+.music-hint{margin-top:.75rem;font:400 .75rem/1.45 var(--mono);color:var(--steel)}
+
+/* Corações discretos caindo pelas laterais */
+.side-heart{
+  position:fixed;
+  top:-24px;
+  z-index:3;
+  pointer-events:none;
+  color:var(--wine2);
+  opacity:.18;
+  text-shadow:0 0 6px rgba(165,42,58,.18);
+  animation:sideHeartFall linear forwards;
+  will-change:transform,opacity;
+}
+@keyframes sideHeartFall{
+  0%{transform:translate3d(0,-20px,0) rotate(0deg);opacity:0}
+  10%{opacity:var(--heart-opacity,.18)}
+  85%{opacity:var(--heart-opacity,.18)}
+  100%{transform:translate3d(var(--heart-drift,0),calc(100vh + 48px),0) rotate(var(--heart-rot,90deg));opacity:0}
+}
+
+
+/* Card da música com capa */
+.track-card{display:grid;grid-template-columns:84px 1fr;gap:.95rem;align-items:center;margin:.3rem 0 1rem;padding:.85rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
+.cover-art{display:block;width:84px;height:84px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 24px rgba(0,0,0,.38)}
+.track-meta{display:flex;flex-direction:column;gap:.18rem;min-width:0}
+.track-meta .tag{font:400 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--wine2)}
+.track-meta strong{font-size:1.12rem;line-height:1.15}
+.track-meta span{color:var(--muted)}
+.track-meta small{color:#d2b1b7;font:400 .78rem/1.35 var(--mono);margin-top:.1rem}
+@media (max-width:380px){.track-card{grid-template-columns:72px 1fr}.cover-art{width:72px;height:72px}}
+
+/* Corações mais visíveis, ainda discretos */
+.side-heart{z-index:5;opacity:.24;text-shadow:0 0 7px rgba(165,42,58,.26),0 0 14px rgba(165,42,58,.12)}
+
+
+/* Ajuste final dos corações laterais: visíveis no celular sem poluir */
+.side-heart{
+  position:fixed;
+  top:-26px;
+  z-index:80;
+  pointer-events:none;
+  color:#b33a4a;
+  opacity:.36;
+  line-height:1;
+  filter:drop-shadow(0 0 3px rgba(165,42,58,.32));
+  animation-name:sideHeartFall;
+  animation-timing-function:linear;
+  animation-fill-mode:forwards;
+}
+@keyframes sideHeartFall{
+  0%{transform:translate3d(0,-12px,0) rotate(0deg);opacity:0}
+  8%{opacity:var(--heart-opacity,.36)}
+  88%{opacity:var(--heart-opacity,.36)}
+  100%{transform:translate3d(var(--heart-drift,0),calc(100vh + 52px),0) rotate(var(--heart-rot,90deg));opacity:0}
+}

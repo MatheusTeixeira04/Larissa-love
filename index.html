@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>Pra Larissa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="dust" aria-hidden="true"></canvas>
+<div id="toast" role="status"></div>
+
+<!-- ========== 1. TELA INICIAL (edite os textos no script.js: LINE1 / LINE2) ========== -->
+<section id="intro">
+  <span class="rec" aria-hidden="true"></span>
+  <p id="l1" class="intro-line"></p>
+  <p id="l2" class="intro-line strong"></p>
+  <button id="enter" class="btn" hidden>Entra aí, Larissa ❤️</button>
+</section>
+
+<main id="site" hidden>
+
+<!-- ========== TRILHA SONORA ========== -->
+<section class="sec music-start">
+  <p class="path reveal">/sistema/trilha-sonora</p>
+  <div class="music-card reveal">
+    <p class="music-kicker">Antes de continuar…</p>
+    <h2>Coloca a trilha dessa história 🎧</h2>
+    <p class="soft">Iron Man — Black Sabbath</p>
+    <div class="track-card" aria-label="Trilha sonora escolhida">
+      <img class="cover-art" src="album-cover.jpg" alt="Capa do álbum Paranoid Super Deluxe do Black Sabbath">
+      <div class="track-meta">
+        <span class="tag">Trilha selecionada</span>
+        <strong>Iron Man</strong>
+        <span>Black Sabbath</span>
+        <small>Uma das preferidas dela 🖤</small>
+      </div>
+    </div>
+    <button id="musicPlay" class="btn music-btn" type="button">▶ Dar play na música</button>
+    <p id="musicHint" class="music-hint">A música começa direto na parte com vocal 🎧</p>
+    <audio id="bgMusic" preload="metadata">
+      <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</section>
+
+<!-- ========== 2. RELATÓRIO TÉCNICO ========== -->
+<!-- data-v = valor da barra (0 a 100). Edite os textos de .k (rótulo) e .v (valor). -->
+<section class="sec">
+  <p class="path reveal">/sistema/relatorio</p>
+  <h2 id="secretTitle" class="reveal">Relatório técnico sobre você</h2>
+  <div class="panel reveal">
+    <div class="rep" data-v="97"><p class="k">Nível de beleza</p><p class="v">suspeitamente alto</p><div class="bar"><i></i></div></div>
+    <div class="rep" data-v="100"><p class="k">Nível de carinho</p><p class="v">acima das especificações</p><div class="bar"><i></i></div></div>
+    <div class="rep" data-v="100"><p class="k">Capacidade de me deixar sem jeito</p><p class="v">100%</p><div class="bar"><i></i></div></div>
+    <div class="rep" data-v="95"><p class="k">Vontade de te ver de novo</p><p class="v crit">crítica</p><div class="bar"><i></i></div></div>
+    <div class="rep" data-v="100"><p class="k">Status atual</p><p class="v">tô gostando dessa menina</p><div class="bar"><i></i></div></div>
+  </div>
+</section>
+
+<!-- ========== 3. COISAS QUE EU GOSTO ========== -->
+<!-- Cards com class="funny" são as piadas (detalhe vinho). -->
+<section class="sec">
+  <h2 class="reveal">Coisas que eu gosto em você</h2>
+  <div class="stack">
+    <p class="card reveal">O jeito que você presta atenção quando eu tô falando.</p>
+    <p class="card reveal">Seu jeito carinhoso.</p>
+    <p class="card funny reveal">Também gosto do fato de você aparentemente ainda não ter percebido que eu sou meio esquisito.</p>
+    <p class="card reveal">Seu sorriso.</p>
+    <p class="card reveal">Quando você fica encostada em mim.</p>
+    <p class="card reveal">O jeito que conversar contigo parece fácil.</p>
+    <p class="card funny reveal">Você ri das minhas piadas. Ou é educada. Prefiro não investigar.</p>
+    <p class="card reveal">Seu jeito de demonstrar interesse.</p>
+    <p class="card reveal">O cheiro do seu cabelo.</p>
+  </div>
+</section>
+
+<!-- ========== 4. ESTATÍSTICAS ========== -->
+<!-- data-n = número que sobe; data-d = casas decimais; data-s = sufixo. Sem data-n = texto fixo. -->
+<section class="sec">
+  <p class="path reveal">/sistema/estatisticas</p>
+  <h2 class="reveal">Estatísticas extremamente científicas</h2>
+  <div class="grid reveal">
+    <div class="tile"><b data-n="98.7" data-d="1" data-s="%">0%</b><span>Probabilidade de eu sorrir quando chega mensagem sua</span></div>
+    <div class="tile"><b class="sm">dados insuficientes</b><span>Quantidade de vezes que pensei em você hoje</span></div>
+    <div class="tile"><b data-n="100" data-d="0" data-s="%">0%</b><span>Vontade de marcar outro encontro</span></div>
+    <div class="tile"><b data-n="0" data-d="0" data-s="%">0%</b><span>Arrependimento de ter te conhecido</span></div>
+  </div>
+</section>
+
+<!-- ========== 5. NOSSA ÚNICA FOTO ========== -->
+<!-- Coloque a foto na mesma pasta do index.html com o nome: nossa-foto.jpg -->
+<section class="sec center">
+  <h2 class="reveal">Documento histórico</h2>
+  <figure class="dossier reveal">
+    <div class="frame">
+      <img src="nossa-foto.jpg" alt="Nossa foto" onerror="this.remove()">
+      <span class="ph">[ nossa-foto.jpg ]</span>
+    </div>
+    <figcaption>arquivo_001.jpg — registro aprovado</figcaption>
+  </figure>
+  <p class="soft reveal">Sim, temos uma foto. Estamos trabalhando para aumentar esse banco de dados.</p>
+</section>
+
+<!-- ========== 7. MENSAGEM SÉRIA ========== -->
+<section class="sec center serious">
+  <span class="line fade"></span>
+  <h2 class="fade">Brincadeiras à parte…</h2>
+  <p class="fade">Eu tô gostando muito de te conhecer, Larissa. Gosto do jeito que a gente conversa, dos nossos passeios e de como tudo parece leve quando tô com você.<br><br>Ainda estamos no começo, e talvez seja justamente isso que eu mais gosto: descobrir mais sobre você a cada vez que a gente se vê.<br><br>A gente já falou sobre futuro algumas vezes, e eu gosto de pensar que talvez isso que estamos construindo agora possa virar algo muito bonito lá na frente.<br><br>Não quero apressar nada, só quero continuar vivendo tudo isso com você, criando mais momentos, mais histórias e descobrindo até onde a gente pode chegar juntos. ❤️</p>
+</section>
+
+<!-- ========== 8. FINAL ========== -->
+<!-- Quer a versão do "banco de dados"? Troque o texto de .big por: Então… a gente continua criando conteúdo pra esse banco de dados? -->
+<section class="sec center final">
+  <p class="soft reveal">Após extensa análise, chegamos à pergunta mais importante:</p>
+  <p class="big reveal">Você aceita sair comigo de novo sábado às 15h?</p>
+  <div id="ask" class="stack reveal">
+    <button class="btn answer red">SIM ❤️</button>
+    <button class="btn answer">ÓBVIO, NÉ 🙄</button>
+  </div>
+  <div id="done" hidden>
+    <p class="big">Resultado registrado com sucesso 😌❤️</p>
+    <p class="soft">Nos vemos no próximo sábado… ou antes, se eu não aguentar a saudade. ❤️</p>
+  </div>
+</section>
+
+<!-- Rodapé: link do Spotify (música original) e ponto com frase escondida -->
+<footer><a id="spotify" href="https://open.spotify.com/intl-pt/track/0vJYFKg9z1IvZiQUyX19cD?si=33aa87173c874b2f" target="_blank" rel="noopener">Ouvir no Spotify ↗</a><br><button id="dot" aria-label="segredo">·</button><p id="credit" hidden>Desenvolvido com HTML, CSS, JavaScript e um pouco de vergonha.</p></footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
